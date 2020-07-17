@@ -1,0 +1,49 @@
+{% extends 'common.html' %}
+
+{% block menu %}
+    {% include 'student/student_menu.html' %}
+{% endblock %}
+
+{% block content %}
+    <title>View All Enrolled Courses</title>
+    <style>
+        #message{
+            font-size: 40px;
+            font-family: "Arial Black";
+            text-align: center;
+            color: gold;
+            border-radius: 10px;
+            text-shadow: black 5px 5px 5px;
+        }
+    </style>
+    <br><br><br>
+    {% if not data %}
+        <div id="message">No Courses are Enrolled</div>
+    {% else %}
+        <table class="table" align="center" width="700">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Faculty</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Fee</th>
+          <th scope="col">Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for x in data %}
+        <tr>
+          <th scope="row">{{ x.name }}</th>
+          <td>{{ x.faculty }}</td>
+          <td>{{ x.date }}</td>
+          <td>{{ x.time }}</td>
+          <td>{{ x.fee }}</td>
+          <td>{{ x.duration }}</td>
+        </tr>
+      {% endfor %}
+
+      </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

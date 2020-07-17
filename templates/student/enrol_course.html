@@ -1,0 +1,70 @@
+{% extends 'common.html' %}
+{% block menu %}
+    {% include 'student/student_menu.html' %}
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <br><br><br>
+    <title>Enrol Course</title>
+    <script>
+        $(function () {
+          $('[data-toggle="popover"]').popover()
+        })
+
+        $(function () {
+            $('.example-popover').popover({
+                container: 'body'
+            })
+        })
+    </script>
+     <table class="table" align="center" width="700">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Faculty</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Fee</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Enrol</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for x in object_list %}
+        <tr>
+          <th scope="row">{{ x.name }}</th>
+          <td>{{ x.faculty }}</td>
+          <td>{{ x.date }}</td>
+          <td>{{ x.time }}</td>
+          <td>{{ x.fee }}</td>
+          <td>{{ x.duration }}</td>
+
+        <form action="{% url 'enrol_course' %}" method="post">
+            {% csrf_token %}
+          <td>
+
+             <input type="hidden" value="{{ x.no }}" name="cno">
+             <input type="hidden" value="{{ request.session.data }}" name="contact">
+
+              <button
+                      type="submit"
+                      class="btn btn-lg btn-link"
+                      data-toggle="popover"
+                      title="{{ message }}"
+                      data-container="body"
+                      data-placement="top">
+                  <img src="{% static 'images/enrol.jpg' %}" width="40" height="40">
+              </button>
+{#             <button type="submit"><img src="{% static 'images/enrol.jpg' %}" width="30" height="30"></button>#}
+          </td>
+
+        </form>
+
+        </tr>
+      {% endfor %}
+
+      </tbody>
+    </table>
+
+{% endblock %}
+

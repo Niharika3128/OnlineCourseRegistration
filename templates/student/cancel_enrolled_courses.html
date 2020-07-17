@@ -1,0 +1,84 @@
+{% extends 'common.html' %}
+{% block menu %}
+    {% include 'student/student_menu.html' %}
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <br><br><br>
+    <title>Cancel Enrolled Courses</title>
+    <script>
+        $(function () {
+          $('[data-toggle="popover"]').popover()
+        })
+
+        $(function () {
+            $('.example-popover').popover({
+                container: 'body'
+            })
+        })
+    </script>
+    <style>
+        #message{
+            font-size: 40px;
+            font-family: "Arial Black";
+            text-align: center;
+            color: gold;
+            border-radius: 10px;
+            text-shadow: black 5px 5px 5px;
+        }
+    </style>
+    {% if not data %}
+        <div id="message">No Courses are Enrolled</div>
+    {% else %}
+        <table class="table" align="center" width="700">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Faculty</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Fee</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Cancel</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for x in data %}
+        <tr>
+          <th scope="row">{{ x.name }}</th>
+          <td>{{ x.faculty }}</td>
+          <td>{{ x.date }}</td>
+          <td>{{ x.time }}</td>
+          <td>{{ x.fee }}</td>
+          <td>{{ x.duration }}</td>
+
+        <form action="{% url 'confirm_cancel' %}" method="post">
+            {% csrf_token %}
+          <td>
+
+             <input type="hidden" value="{{ x.no }}" name="cno">
+             <input type="hidden" value="{{ request.session.data }}" name="contact">
+
+              <button
+                      type="submit"
+                      class="btn btn-lg btn-link"
+                      data-toggle="popover"
+                      title="Course Enrolled"
+                      data-container="body"
+                      data-placement="top">
+                  <img src="{% static 'images/cancel.png' %}" width="30" height="30">
+              </button>
+          </td>
+
+        </form>
+
+        </tr>
+      {% endfor %}
+
+      </tbody>
+    </table>
+    {% endif %}
+
+
+{% endblock %}
+

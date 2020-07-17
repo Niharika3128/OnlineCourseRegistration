@@ -1,0 +1,70 @@
+{% extends 'common.html' %}
+
+{% block menu %}
+    {% include 'student/main_menu.html' %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <title>Online Course Registration</title>
+    <table align="center">
+        <tr>
+            <th>
+                <img src="{% static 'images/students.png' %}" width="750">
+            </th>
+            <th>
+                <table align="center">
+                    <tr>
+                        <th colspan="8">
+                            <u><font size="4" face="Arial Black">Available Courses: </font></u>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+                              <div class="card-header"><img src="{% static 'images/python.png' %}" width="30" height="30"><span>  </span>Python</div>
+                              <div class="card-body">
+                                <h5 class="card-title">By Mr.Naveen</h5>
+                                <p class="card-text">Whether you're new to programming or an experienced developer, it's easy to learn and use Python.</p>
+                              </div>
+                            </div>
+                        </th>
+                        <th></th><th></th><th></th><th></th><th></th><th></th>
+                        <th>
+                            <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+                              <div class="card-header"><img src="{% static 'images/django-logo-negative.png' %}" width="100" height="30"></div>
+                              <div class="card-body">
+                                <h5 class="card-title">By Mr.Naveen</h5>
+                                <p class="card-text"><img src="{% static 'images/django.jpg' %}" width="70" height="45"></p>
+                                <p class="card-text">Python Web Framework</p>
+                              </div>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <th>
+                            <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                              <div class="card-header">Real Time Project</div>
+                              <div class="card-body">
+                                <h5 class="card-title">By Mr.Naveen</h5>
+                                <p class="card-text">Django Web Services and Realtime Project</p>
+                              </div>
+                            </div>
+                        </th>
+                        <th></th><th></th><th></th><th></th><th></th><th></th>
+                        <th>
+                            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                              <div class="card-header"><img src="{% static 'images/41c18293b14451f8e88fd1d9982f5558_flask-python-web-framework-web-application-tutorial-others-png-_728-591.jpeg' %}" width="30" height="30"><span> </span>Flask</div>
+                              <div class="card-body">
+                                <h5 class="card-title">By Mr.Naveen</h5>
+                                <p class="card-text">Micro Web Framework, one drop at a time</p>
+                              </div>
+                            </div>
+                        </th>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+    </table>
+{% endblock %}
