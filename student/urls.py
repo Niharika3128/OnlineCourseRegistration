@@ -18,7 +18,7 @@ from django.urls import path
 from django.views.generic import TemplateView, ListView
 
 from admin.models import Course
-from        student import views
+from student import views
 
 urlpatterns = [
     path('',TemplateView.as_view(template_name='student/main_page.html'),name='student_main'),
@@ -32,5 +32,6 @@ urlpatterns = [
     path('view_enrolled_courses/',views.view_enrolled_courses,name='view_enrolled_courses'),
     path('cancel_enrolled_courses/',views.cancel_enrolled_courses,name='cancel_enrolled_courses'),
     path('confirm_cancel/',views.confirmCancel,name='confirm_cancel'),
-
+    path('checkemail/',views.checkEmail,name='checkemail'),
+    path('checkcontact/',views.checkContact,name='checkcontact'),
 ]
