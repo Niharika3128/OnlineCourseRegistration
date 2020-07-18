@@ -21,7 +21,7 @@ from admin.models import Course
 from        student import views
 
 urlpatterns = [
-    path('',TemplateView.as_view(template_name='student/main_page.html'),name='main'),
+    path('',TemplateView.as_view(template_name='student/main_page.html'),name='student_main'),
     path('student_register/',TemplateView.as_view(template_name='student/student_registration.html'),name='student_register'),
     path('student_login/',TemplateView.as_view(template_name='student/student_login.html'),name='student_login'),
     path('login_check/',views.loginCheck,name='login_check'),

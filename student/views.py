@@ -41,7 +41,7 @@ def loginCheck(request):
 
 def studentLogout(request):
     del request.session['data']
-    return redirect('main')
+    return redirect('student_main')
 
 def enrolCourse(request):
     cno = request.POST.get('cno')
